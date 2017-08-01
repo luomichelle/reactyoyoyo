@@ -19,7 +19,7 @@ class HelloWorld extends Component {
 
 	  return (
 	    <div className="HelloWorld">
-	      {this.state.greeting},,,,{this.props.name}!
+	      {this.state.greeting} my people: {this.props.name}!
 	      <br/>
 	      <button onClick={this.frenchify}>Frenchify!</button>
 	    </div>
