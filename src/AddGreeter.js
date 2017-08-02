@@ -19,10 +19,17 @@ class AddGreeter extends Component {
 //This means every time that input is modified, it will trigger this function and update the component’s state based on what is put in/removed 
 //from the input.
   handleUpdate(event) {
+  	//change value:
     this.setState({ greetingName: event.target.value });
   }
+
+
+//This calls the “addGreeting” function that was passed in via props and passes that function (remember the newName argument?)
+// our greetingName out of state. After that, it clears out the greetingName state from our component. 
   addGreeting() {
+  	//passing value that when user click
 	  this.props.addGreeting(this.state.greetingName);
+	//clear greeting state
 	  this.setState({ greetingName: '' });
    } 
 

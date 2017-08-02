@@ -3,6 +3,8 @@ import HelloWorld from './HelloWorld';
 import './HelloWorldList.css';
 import AddGreeter from './AddGreeter';
 
+//
+
 //map each item in the array to a special anonymous function 
 //that just returns a HelloWorld component.
 //key:This is because for React to know which element to modify/remove/etc when one of the elements in your list changes, 
@@ -21,13 +23,18 @@ class HelloWorldList extends Component {
 	    <HelloWorld key={name} name={name}/>
 	  ));
 	}
-	addGreeting(newName) {
-	  this.setState({ greetings: [...this.state.greetings, newName] });
-	}
+
+	
 	//the start of the array should remain this.state.greetings, 
 	//but I also want you to add newName onto the end of the array. 
 	//This should return a new modified copy of the array but not change the original.
 
+	addGreeting(newName){
+	  this.setState({ 
+	  	//remain this.state.greetings
+	  	greetings: [...this.state.greetings, newName] 
+	  });
+	}
 	////////////////////////////////////////////////////////////
 	//This calls the “addGreeting” function that was passed in via props and passes that function (remember the newName argument?) 
 	//our greetingName out of state. After that, it clears out the greetingName state from our component. 
