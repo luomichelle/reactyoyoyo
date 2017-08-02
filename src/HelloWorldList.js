@@ -16,11 +16,18 @@ class HelloWorldList extends Component {
 	  super(props);
 	  this.state = { greetings: ['Michelle', 'Simon', 'Roni'] };
 	  this.addGreeting = this.addGreeting.bind(this);
+	  this.removeGreeting = this.removeGreeting.bind(this);
 	}
 
+
+	// our renderGreetings function needs to be updated to pass this function down to each HelloWorld child.
 	renderGreetings() {
 	  return this.state.greetings.map(name => (
-	    <HelloWorld key={name} name={name}/>
+	    <HelloWorld
+	      key={name}
+	      name={name}
+	      removeGreeting={this.removeGreeting}
+	    />
 	  ));
 	}
 
@@ -39,6 +46,16 @@ class HelloWorldList extends Component {
 	//This calls the “addGreeting” function that was passed in via props and passes that function (remember the newName argument?) 
 	//our greetingName out of state. After that, it clears out the greetingName state from our component. 
 	//Finally, we’ll need to modify our render() function a bit to work with this new function:
+	//////////////////////////////////////////////////////////////
+	//Since this is modifying state and being passed to a child, we need to explicitly bind this inside of the constructor:
+	removeGreeting(removeName) {   //remove element inside of the heelowworld file.
+	  const filteredGreetings = this.state.greetings.filter(name => {
+	    return name !== removeName;
+	  });
+	  this.setState({ greetings: filteredGreetings });
+	}
+
+
 	render() {
 	  return (
 	    <div className="HelloWorldList">
